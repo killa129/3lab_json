@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  <title>3-lab</title> 
+  <title>3 laba json movies</title> 
 </head>
 <body> 
   <header>
@@ -55,7 +55,7 @@
       <section>
         <form method="post" action="{% url 'add_movies' %}">
           {% csrf_token %}
-          {{movie_form.as_p}}
+          {{ movie_form.as_p }}
           <button type="submit">Добавить фильм</button>
         </form>
       </section>
@@ -63,14 +63,13 @@
       <section>
         <form method="post" action="{% url 'import_json' %}" enctype="multipart/form-data">
           {% csrf_token %}
-          <input type="file" name="json_file" accept=".json">
+          {{ import_form.as_p }}
           <button type="submit">Импортировать</button> 
         </form>
       </section>
 
       <section>
         <form  method="get" action="{% url 'export_json' %}">
-          {{import_form.as_p}}
           <button type="submit">Экспортировать</button>
         </form>
       </section>

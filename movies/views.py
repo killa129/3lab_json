@@ -4,6 +4,7 @@ from .forms import MovieForm, ImportForm
 from django.conf import settings
 from django.contrib import messages
 import os
+from django.http import FileResponse
 
 
 def index(request):
@@ -104,7 +105,14 @@ def import_json(request):
 
 
 def export_json(request):
-    pass
+    file_path = load_json(os.path.join(settings.MEDIA_ROOT, "movies.json"))
+    if not os.path.exists(file_path):
+        messages.error(request, "Файл еще не создан")
+        return redirect("index")
+
+    return FileResponse(
+        open(file_path, "rb"), as_attachment=True, filename="movies.json"
+    )
 
 
 def load_json(path):
