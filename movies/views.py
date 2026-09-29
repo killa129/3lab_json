@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+import json
 
-# Create your views here.
+
+def index(request):
+    context = {"movies": {}}
+    response = render(request, "movies/index.html", context)
+    return response
