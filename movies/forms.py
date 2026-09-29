@@ -92,7 +92,7 @@ class ImportForm(forms.Form):
         widget=forms.FileInput(
             attrs={
                 "class": "form-input",
-                "accept": ".json,applicatioin/json",
+                "accept": ".json,movies/json",
             }
         ),
     )
