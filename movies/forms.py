@@ -46,6 +46,7 @@ class MovieForm(forms.Form):
     genre = forms.ChoiceField(
         label="Жанр",
         choices=[
+            ("", "выберите жанр"),
             ("drama", "драма"),
             ("comedy", "комедия"),
             ("action", "боевик"),
